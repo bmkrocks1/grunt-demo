@@ -1,0 +1,325 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>GRUNT Presentation</title>
+
+		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+		<meta name="author" content="Hakim El Hattab">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="css/reveal.min.css">
+		<link rel="stylesheet" href="css/theme/default.css" id="theme">
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+		<script>
+			if( window.location.search.match( /print-pdf/gi ) ) {
+				var link = document.createElement( 'link' );
+				link.rel = 'stylesheet';
+				link.type = 'text/css';
+				link.href = 'css/print/pdf.css';
+				document.getElementsByTagName( 'head' )[0].appendChild( link );
+			}
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+
+        <style>
+            h2 { text-transform: none !important; }
+            code { color: #7DE05B; }
+            .blue { color: #13daec; }
+            .red { color: #ff5e99; }
+        </style>
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+
+                <section>
+                    <img width="550" height="200" class="grunt-logo" src="images/grunt-logo.png">
+                    <p>
+                        <small>Presentation by <a href="#">Billie Mikhael Ko</a></small>
+                    </p>
+                </section>
+
+
+				<section>
+					<h2>Why use a task runner?</h2>
+					<p class="fragment roll-in">
+                        In one word: <code>automation</code>. The less work you have to do when performing repetitive tasks like minification, compilation, unit testing, linting, etc, the easier your job becomes. After you've configured it through a <a href class="blue">Gruntfile</a>, a task runner can do most of that mundane work for you—and your team—with basically zero effort.
+					</p>
+				</section>
+
+				<!-- Example of nested vertical slides -->
+				<section>
+					<section>
+						<h2>Getting started</h2>
+                        <img src="images/getting-started.png">
+						<p>
+                            Grunt and Grunt plugins are installed and managed via <span class="red">npm</span>, the Node.js package manager.
+						</p>
+
+					</section>
+					<section>
+						<h2>Installing the CLI</h2>
+                        <img width="" height="" src="images/install-grunt-cli.png" alt="">
+
+                        <aside class="notes">
+                            In order to get started, you'll want to install Grunt's command line interface (CLI) globally.
+                        </aside>
+					</section>
+					<section>
+						<h2>Working with an existing Grunt project</h2>
+                        <ol>
+                            <li class="fragment roll-in">Change to the project's root directory.</li>
+                            <li class="fragment roll-in">Install project dependencies with <code>npm install</code>.</li>
+                            <li class="fragment roll-in">Run Grunt with <code>grunt</code>.</li>
+                        </ol>
+					</section>
+					<section>
+						<h2>Preparing a new Grunt project</h2>
+						<p>A typical setup will involve adding two files to your project: <span class="blue">package.json</span> and the <span class="blue">Gruntfile.js</span></p>
+					</section>
+                    <section>
+                        <h2 class="blue">package.json</h2>
+                        <img src="images/package-json.png">
+                        <p>This file is used by <span class="red">npm</span> to store metadata for projects published as npm modules. You will list grunt and the Grunt plugins your project needs as <span class="red">devDependencies</span> in this file.</p>
+                    </section>
+                    <section>
+                        <h2 class="blue">Gruntfile.js</h2>
+                        <img src="images/gruntfile-js.png">
+                        <p>This file is used to configure or define tasks and load Grunt plugins.</p>
+                    </section>
+				</section>
+
+				<section>
+                    <section>
+                        <h2>The Gruntfile</h2>
+                        <img src="images/rage-the-gruntfile.jpg">
+                        <p>A <span class="blue">Gruntfile</span> is comprised of the following parts:</p>
+                        <ul>
+                            <li class="fragment roll-in">The "wrapper" function</li>
+                            <li class="fragment roll-in">Project and task configuration</li>
+                            <li class="fragment roll-in">Loading Grunt plugins and tasks</li>
+                            <li class="fragment roll-in">Custom tasks</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2>The "wrapper" function</h2>
+                        <p>Every <span class="blue">Gruntfile</span> (and gruntplugin) uses this basic format, and all of your Grunt code must be specified inside this function:</p>
+                        <img src="images/grunt-wrapper-function.png">
+                    </section>
+                    <section>
+                        <h2>Project and task configuration</h2>
+                        <p>Most Grunt tasks rely on configuration data defined in an object passed to the <code>grunt.initConfig</code> method.</p>
+                        <img src="images/grunt-init-config.png">
+                    </section>
+                    <section>
+                        <h2>Loading Grunt plugins and tasks</h2>
+                        <p>Many commonly used tasks like concatenation, minification and linting are available as grunt plugins. As long as a plugin is specified in <span class="blue">package.json</span> as a dependency, and has been installed via <code>npm install</code>, it may be enabled inside your <span class="blue">Gruntfile</span> with a simple command.</p>
+                        <img src="images/grunt-load-npm.png">
+                    </section>
+                    <section>
+                        <h2>Custom tasks</h2>
+                        <p>You can configure Grunt to run one or more tasks by default by defining a <code>default</code> task.</p>
+                        <img src="images/grunt-register-task.png">
+                    </section>
+				</section>
+
+				<section>
+                    <section>
+                        <h2>Configuring tasks</h2>
+                        <img src="images/rage-creating-tasks.png">
+                    </section>
+                    <section>
+                        <h2>Grunt Configuration</h2>
+                        <img src="images/config-grunt.png">
+
+                        <aside class="notes">
+                            Task configuration is specified in your Gruntfile via the grunt.initConfig method. This configuration will mostly be under task-named properties, but may contain any arbitrary data. As long as properties don't conflict with properties your tasks require, they will be otherwise ignored.
+
+                            Also, because this is JavaScript, you're not limited to JSON; you may use any valid JavaScript here. You may even programmatically generate the configuration if necessary.
+                        </aside>
+                    </section>
+                    <section>
+                        <h2>Task Configuration and Targets</h2>
+                        <img src="images/config-task-target.png">
+
+                        <aside class="notes">
+                            When a task is run, Grunt looks for its configuration under a property of the same name. Multi-tasks can have multiple configurations, defined using arbitrarily named "targets." In the example below, the concat task has foo and bar targets, while the uglify task only has a bar target.
+                        </aside>
+                    </section>
+                    <section>
+                        <h2>Options</h2>
+                        <img src="images/config-options.png">
+
+                        <aside class="notes">
+                            Inside a task configuration, an options property may be specified to override built-in defaults. In addition, each target may have an options property which is specific to that target. Target-level options will override task-level options.
+
+                            The options object is optional and may be omitted if not needed.
+                        </aside>
+                    </section>
+				</section>
+
+				<section>
+                    <section>
+                        <h2>Files</h2>
+                        <img src="images/rage-files.jpg">
+                        <aside class="notes">
+                            Because most tasks perform file operations, Grunt has powerful abstractions for declaring on which files the task should operate. There are several ways to define src-dest (source-destination) file mappings, offering varying degrees of verbosity and control. Any multi task will understand all the following formats, so choose whichever format best meets your needs.
+                        </aside>
+                    </section>
+                    <section>
+                        <h2>Compact Format</h2>
+                        <p>A single <span class="blue">src-dest</span> (source-destination) file mapping per-target.</p>
+                        <img src="images/files-compact.png">
+                        <aside class="notes">
+                            It is most commonly used for read-only tasks, like grunt-contrib-jshint, where a single src property is needed, and no dest key is relevant. This format also supports additional properties per src-dest file mapping.
+                        </aside>
+                    </section>
+                    <section>
+                        <h2>File Object Format</h2>
+                        <p>A multiple <span class="blue">src-dest</span> file mapping per-target.</p>
+                        <img src="images/files-file-object.png">
+                        <aside class="notes">
+                            This form supports multiple src-dest mappings per-target, where the property name is the destination file, and its value is the source file(s). Any number of src-dest file mappings may be specified in this way, but additional properties may not be specified per mapping.
+                        </aside>
+                    </section>
+                    <section>
+                        <h2>File Array Format</h2>
+                        <p>Supports multiple <span class="blue">src-dest</span> file mappings per-target, while also allowing additional properties per mapping.</p>
+                        <img src="images/files-file-array.png">
+                    </section>
+				</section>
+
+				<section>
+					<h2>Templates</h2>
+					<p>Templates specified using <code><% %></code> delimiters will be automatically expanded when tasks read them from the config. Templates are expanded recursively until no more remain.</p>
+				    <img src="images/templates.png">
+                </section>
+
+				<section>
+					<h2>Importing External Data</h2>
+					<img src="images/import-external.png">
+
+                    <aside class="notes">
+                        In the following Gruntfile, project metadata is imported into the Grunt config from a package.json file, and the grunt-contrib-uglify plugin uglify task is configured to minify a source file and generate a banner comment dynamically using that metadata.
+
+                        Grunt has grunt.file.readJSON and grunt.file.readYAML methods for importing JSON and YAML data.
+                    </aside>
+				</section>
+
+                <section>
+                    <section>
+                        <h2>Creating tasks</h2>
+                        <p>Tasks are grunt's bread and butter.</p>
+                        <img class="fragment roll-in" src="images/rage-creating-task.png">
+                    </section>
+                    <section>
+                        <h2>Alias Tasks</h2>
+                        <img src="images/task-alias-1.png">
+                        <img src="images/task-alias-2.png">
+
+                        <aside class="notes">
+                            If a task list is specified, the new task will be an alias for one or more other tasks. Whenever this "alias task" is run, every specified tasks in taskList will be run, in the order specified. The taskList argument must be an array of tasks.
+
+                            This example alias task defines a "default" task whereby the "jshint", "qunit", "concat" and "uglify" tasks are run automatically if Grunt is executed without specifying any tasks:
+
+                            Task arguments can be specified as well. In this example, the alias "dist" runs both the "concat" and "uglify" tasks, each with a "dist" argument:
+                        </aside>
+                    </section>
+                    <section>
+                        <h2>Multi Tasks</h2>
+                        <img src="images/task-multi.png">
+
+                        <aside class="notes">
+                            When a multi task is run, Grunt looks for a property of the same name in the Grunt configuration. Multi-tasks can have multiple configurations, defined using arbitrarily named "targets."
+
+                            Given the specified configuration, this example multi task would log foo: 1,2,3 if Grunt was run via grunt log:foo, or it would log bar: hello world if Grunt was run via grunt log:bar. If Grunt was run as grunt log however, it would log foo: 1,2,3 then bar: hello world then baz: false.
+                        </aside>
+                    </section>
+                    <section>
+                        <h2>"Basic" Tasks</h2>
+                        <img src="images/task-basic.png">
+
+                        <aside class="notes">
+                            When a basic task is run, Grunt doesn't look at the configuration or environment—it just runs the specified task function, passing any specified colon-separated arguments in as function arguments.
+
+                            This example task logs foo, testing 123 if Grunt is run via grunt foo:testing:123. If the task is run without arguments as grunt foo the task logs foo, no args.</aside>
+                    </section>
+                    <section>
+                        <h2>Custom tasks</h2>
+                        <img src="images/task-custom.png">
+
+                        <aside class="notes">
+                            Inside a task, you can run other tasks.
+                        </aside>
+                    </section>
+                </section>
+
+				<section>
+					<h1>Questions?</h1>
+                    <img src="images/rage-questions.jpg">
+				</section>
+
+                <section data-transition="linear" data-background="#8c4738" data-background-transition="slide">
+                    <h2>THE END</h2>
+                    <a class="test" href="http://cornify.com">
+                        <img width="280" height="326" src="https://s3.amazonaws.com/hakim-static/reveal-js/cornify.gif" alt="Unicorn">
+                    </a>
+                </section>
+
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.min.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Parallax scrolling
+				// parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+				// parallaxBackgroundSize: '2100px 900px',
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
